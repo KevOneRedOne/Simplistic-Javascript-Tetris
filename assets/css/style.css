@@ -1,0 +1,23 @@
+html,
+body{
+    margin : 0; 
+    overflow-x: hidden;
+    background-color: rgb(36, 34, 34);
+}
+
+.main_content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* part of the css for the tetris zone */
+.grid {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 640px;
+    height: 640px;
+    margin: -320px 0 0 -320px;
+    background-color: white;
+}
