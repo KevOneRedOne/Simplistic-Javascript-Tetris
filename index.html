@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="FR">
     <head>
         <meta charset="utf-8">
-        <script src="main.js"></script>
         <title>Simplistic Javascript Tetris</title>
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="icon" href="assets/img/tetris24px.png">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P"> 
+        <link rel="stylesheet" href="assets/css/style.css">
         
     </head>
     <body>
         <header>
-            <h1> Simplistic Javascript Tetris</h1>
+            <div class="header">
+              <div class="H-logo">
+                <img src="assets/img/tetris128px.png" alt="Tétris">
+              </div>
+              <div class="H-tittle">
+                <h1> Simplistic JS Tetris</h1>
+              </div>
+            </div>
         </header>
         
         <div class="grid">
@@ -29,14 +36,19 @@
               </div>
               
               <button id="play-btn" onclick="play()" class="play-button">Play</button>
-              <button id="pause-btn" onclick="pause()" class="play-button">Pause</button>
+              <!-- <button id="pause-btn" onclick="pause()" class="play-button">Pause</button> -->
             </div>
         </div>
 
     </body>
-    <script src="/Simplistic-Javascript-Tetris/assets/js/main.js"></script>
-    <script src="/Simplistic-Javascript-Tetris/assets/js/score.js"></script>
-    <script src="/Simplistic-Javascript-Tetris/assets/js/piece.js"></script>
-    <script src="/Simplistic-Javascript-Tetris/assets/js/constants.js"></script>
-    <script src="/Simplistic-Javascript-Tetris/assets/js/board.js"></script>
+    <!-- <script src="assets/js/main.js"></script>
+    <script src="assets/js/score.js"></script>
+    <script src="assets/js/piece.js"></script>
+    <script src="assets/js/constants.js"></script>
+    <script src="assets/js/board.js"></script> -->
+    <script src="main.js"></script>
+    <script src="score.js"></script>
+    <script src="piece.js"></script>
+    <script src="constants.js"></script>
+    <script src="board.js"></script>
 </html>
