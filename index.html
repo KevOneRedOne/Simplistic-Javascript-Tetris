@@ -4,24 +4,39 @@
         <meta charset="utf-8">
         <script src="main.js"></script>
         <title>Simplistic Javascript Tetris</title>
-        <link rel="stylesheet" href="/Simplistic-Javascript-Tetris/assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P"> 
+        
     </head>
     <body>
         <header>
             <h1> Simplistic Javascript Tetris</h1>
         </header>
         
-        <!-- contenu du tétris-->
-        <div class="main_content"> 
-            <div class="grid">
-                <p>tata</p>
+        <div class="grid">
+            <div class="left-column">
+                <h2>HIGH SCORES</h2>
+                <ol id="highScores"></ol>
+              </div>
+            <canvas id="board" class="game-board"></canvas>
+            <div class="right-column">
+              <div>
+                <h1>TETRIS</h1>
+                <p>Score: <span id="score">0</span></p>
+                <p>Lines: <span id="lines">0</span></p>
+                <p>Level: <span id="level">0</span></p>
+                <canvas id="next" class="next"></canvas>
+              </div>
+              
+              <button id="play-btn" onclick="play()" class="play-button">Play</button>
+              <button id="pause-btn" onclick="pause()" class="play-button">Pause</button>
             </div>
         </div>
 
-        <footer>
-            <!-- mettre un copyright -->
-        </footer>
     </body>
-    <script src="/Simplistic-Javascript-Tetris/assets/js/tetrominoes.js"></script>
+    <script src="/Simplistic-Javascript-Tetris/assets/js/main.js"></script>
     <script src="/Simplistic-Javascript-Tetris/assets/js/score.js"></script>
+    <script src="/Simplistic-Javascript-Tetris/assets/js/piece.js"></script>
+    <script src="/Simplistic-Javascript-Tetris/assets/js/constants.js"></script>
+    <script src="/Simplistic-Javascript-Tetris/assets/js/board.js"></script>
 </html>
