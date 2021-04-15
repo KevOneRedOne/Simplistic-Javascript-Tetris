@@ -1,0 +1,75 @@
+html,
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: rgb(36, 34, 34);
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* part of the css for the tetris zone */
+
+* {
+  font-family: "Press Start 2P", cursive;
+  color: whitesmoke;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh;
+  margin-bottom: 5vh;
+}
+
+.Count_FPS {
+  display : flex;
+  float: right;
+}
+
+.H-tittle h1 {
+  text-transform: uppercase;
+  font-size: 1.8em;
+}
+
+.H-tittle {
+  padding: 1vh;
+}
+
+.H-logo img {
+  width: 50px;
+}
+
+.grid {
+  padding: 5vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.game-board {
+  background-image: url("../img/bgtetris2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 400px;
+  height: 800px;
+  border: solid 2px;
+}
+
+.play-button {
+  background-color: #4caf50;
+  font-size: 16px;
+  padding: 15px 30px;
+  cursor: pointer;
+}
