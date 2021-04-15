@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="FR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,22 +24,26 @@
       </div>
     </header>
     <div class="grid">
-      <canvas id="board" class="game-board"></canvas>
-      <div class="right-column">
+        <canvas id="tetris" class="game-board" width="400px" height="800px"></canvas>
         <div>
-          <h1>TETRIS</h1>
-          <p>Score: <span id="score">0</span></p>
-          <p>Lines: <span id="lines">0</span></p>
-          <p>Level: <span id="level">0</span></p>
-          <canvas id="next" class="next"></canvas>
-        </div>
-        <button id="play-btn" onclick="play()" class="play-button">Play</button>
-        <button id="pause-btn" onclick="pause()" class="play-button">Pause</button>
+          Score : <div id="score">0</div>
       </div>
-    </div>
-    <script type="text/javascript" src="assets/js/constants.js"></script>
-    <script type="text/javascript" src="assets/js/board.js"></script>
-    <script type="text/javascript" src="assets/js/piece.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
-  </body>
+      <button id="play-btn" onclick="play()" class="play-button">Play</button>
+      <button id="pause-btn" onclick="pause()" class="play-button">Pause</button>
+    </body>
+    <script src="assets/js/tetris.js"></script>
+    <script src="assets/js/tetrominoes.js"></script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
