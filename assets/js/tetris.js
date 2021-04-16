@@ -1,11 +1,27 @@
 const cvs = document.getElementById("tetris");
 const ctx = cvs.getContext("2d");
 const scoreElement = document.getElementById("score");
+const ctxNext = document.getElementById("next");
 
+//creation of variables allowing to create the tetris board
 const ROW = 20;
 const COL = COLUMN = 10;
 const SQ = squareSize = 40;
-const VACANT = "Black"; // color of an empty square
+const VACANT = "black"; // color of the bg
+
+// the pieces and their colors
+const PIECES = [
+    [Z,"red"],
+    [S,"green"],
+    [T,"purple"],
+    [O,"yellow"],
+    [L,"blue"],
+    [I,"cyan"],
+    [J,"orange"]
+];
+
+let score = 0;
+
 
 // draw a square
 function drawSquare(x,y,color){
@@ -15,6 +31,7 @@ function drawSquare(x,y,color){
     ctx.strokeStyle = "BLACK";
     ctx.strokeRect(x*SQ,y*SQ,SQ,SQ);
 }
+
 
 // create the board
 
@@ -37,17 +54,6 @@ function drawBoard(){
 
 drawBoard();
 
-// the pieces and their colors
-
-const PIECES = [
-    [Z,"red"],
-    [S,"green"],
-    [T,"purple"],
-    [O,"yellow"],
-    [L,"blue"],
-    [I,"cyan"],
-    [J,"orange"]
-];
 
 // generate random pieces
 
@@ -78,7 +84,7 @@ Piece.prototype.fill = function(color){
     for( r = 0; r < this.activeTetromino.length; r++){
         for(c = 0; c < this.activeTetromino.length; c++){
             // we draw only occupied squares
-            if( this.activeTetromino[r][c]){
+            if(this.activeTetromino[r][c]){
                 drawSquare(this.x + c,this.y + r, color);
             }
         }
@@ -86,14 +92,13 @@ Piece.prototype.fill = function(color){
 }
 
 // draw a piece to the board
-
 Piece.prototype.draw = function(){
     this.fill(this.color);
 }
 
+
+
 // undraw a piece
-
-
 Piece.prototype.unDraw = function(){
     this.fill(VACANT);
 }
@@ -110,7 +115,9 @@ Piece.prototype.moveDown = function(){
         this.lock();
         p = randomPiece();
     }
-    
+    // score += 0.5
+    calculateFPSNormal();
+    updateLabel( FPSNormal );
 }
 
 // move Right the piece
@@ -120,6 +127,8 @@ Piece.prototype.moveRight = function(){
         this.x++;
         this.draw();
     }
+    calculateFPSNormal();
+    updateLabel( FPSNormal );
 }
 
 // move Left the piece
@@ -129,6 +138,8 @@ Piece.prototype.moveLeft = function(){
         this.x--;
         this.draw();
     }
+    calculateFPSNormal();
+    updateLabel( FPSNormal );
 }
 
 // rotate the piece
@@ -155,7 +166,6 @@ Piece.prototype.rotate = function(){
     }
 }
 
-let score = 0;
 
 Piece.prototype.lock = function(){
     for( r = 0; r < this.activeTetromino.length; r++){
@@ -167,6 +177,7 @@ Piece.prototype.lock = function(){
             // pieces to lock on top = game over
             if(this.y + r < 0){
                 alert("Game Over");
+
                 // stop request animation frame
                 gameOver = true;
                 break;
@@ -194,9 +205,10 @@ Piece.prototype.lock = function(){
                 board[0][c] = VACANT;
             }
             // increment the score
-            score += 10;
+            score += 40;
         }
     }
+
     // update the board
     drawBoard();
     
@@ -204,7 +216,7 @@ Piece.prototype.lock = function(){
     scoreElement.innerHTML = score;
 }
 
-// collision fucntion
+// collision function
 
 Piece.prototype.collision = function(x,y,piece){
     for( r = 0; r < piece.length; r++){
@@ -253,20 +265,34 @@ function CONTROL(event){
     }
 }
 
+
 // drop the piece every 1sec
 
 let dropStart = Date.now();
 let gameOver = false;
 function drop(){
+    document.querySelector('#play-btn').style.display = 'none'
+    document.querySelector('#pause-btn').style.display = 'block'
     let now = Date.now();
     let delta = now - dropStart;
-    if(delta > 1000){
+    if(delta > 800){
         p.moveDown();
         dropStart = Date.now();
     }
-    if( !gameOver){
+    if(!gameOver){
         requestAnimationFrame(drop);
     }
+    calculateFPSNormal();
+    updateLabel( FPSNormal );
 }
 
-drop();
+
+
+function pause() {
+
+}
+
+
+
+
+
