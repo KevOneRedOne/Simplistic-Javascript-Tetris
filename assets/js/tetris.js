@@ -64,7 +64,10 @@ function randomPiece(){
 
 let p = randomPiece();
 
-// The Object Piece
+
+/*---------------------------------------------------------------------------
+-----------------------The Object Piece--------------------------------------
+-----------------------------------------------------------------------------*/
 
 function Piece(tetromino,color){
     this.tetromino = tetromino;
@@ -115,7 +118,6 @@ Piece.prototype.moveDown = function(){
         this.lock();
         p = randomPiece();
     }
-    // score += 0.5
     calculateFPSNormal();
     updateLabel( FPSNormal );
 }
@@ -178,8 +180,6 @@ Piece.prototype.lock = function(){
             if(this.y + r < 0){
                 var locktop = true
                 gameOver = true;
-                // MessageUser();
-                // // cancelAnimationFrame(drop)
                 break
             }
             // we lock the piece
@@ -207,10 +207,6 @@ Piece.prototype.lock = function(){
             // increment the score
             score += 40;
         }
-    }
-
-    if (locktop == true | gameOver == true) {
-        MessageUser();
     }
 
     // update the board
@@ -249,6 +245,12 @@ Piece.prototype.collision = function(x,y,piece){
     }
     return false;
 }
+/*---------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------*/
+
+
+
 
 // CONTROL the piece
 
@@ -277,16 +279,7 @@ var gameOver = false;
 function drop(){
     document.querySelector('#play-btn').style.display = 'none'
     document.querySelector('#pause-btn').style.display = 'block'
-    // toto = document.querySelector('#pause-btn')
-    
-    // if (toto.addEventListener("click", function(){
-    //     // document.querySelector('#play-btn').style.display = 'block'
-    //     // document.querySelector('#pause-btn').style.display = 'none'
-    //     alert('Jeu en pause')
-    //     cancelAnimationFrame(drop)
-    // }));
-    
-    
+        
     let now = Date.now();
     let delta = now - dropStart;
     if(delta > 800){
@@ -294,12 +287,13 @@ function drop(){
         dropStart = Date.now();
     }
     if(!gameOver){
-        requestAnimationFrame(drop);
+        anime = requestAnimationFrame(drop);
     } else {
         alert('Game Over !')
         const nameUser = prompt("Veuillez saisir votre nom : ");
         alert('Joueur : ' + nameUser + '  '  + 'Score : '+ score);
-        cancelAnimationFrame(drop)
+        cancelAnimationFrame(anime)
+        HighScore(nameUser);
     }
     calculateFPSNormal();
     updateLabel( FPSNormal );
@@ -308,8 +302,11 @@ function drop(){
 
 
 function pause() {
+    document.querySelector('#play-btn').style.display = 'block'
+    document.querySelector('#pause-btn').style.display = 'none'
+    // alert('Jeu est en pause')
 
-
+    cancelAnimationFrame(anime)
 }
 
 // const MessageUser = () => {
@@ -321,15 +318,22 @@ function pause() {
     
 // }
 
-// const HighScore = () => {
-//     hightScorelist = document.querySelector('JC')
+const HighScore = (nameUser) => {
+    // hightScorelist = document.querySelector('JC')
     
-//     scoretab = {'Joueur' : nameUser, "Score " : score}
-//     hightScores = JSON.parse(scoretab)
+
+    
+    var scoretab = {"Joueur" : nameUser, "Score" : score}
+    console.log(scoretab)
+    var myJSON = JSON.stringify(scoretab)
+    document.querySelector("Joueur").innerHTML = myJSON;
 
 
-//     highScoreList.innerHTML = hightScores.Joueur + ", " + hightScores.score
-// }
+    // hightScores = JSON.parse(scoretab)
+    // localStorage.setItem("Hight Score" ,scoretab)
+
+    // highScoreList.innerHTML = hightScores.Joueur + ", " + hightScores.score
+}
 
 
 

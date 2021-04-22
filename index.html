@@ -26,13 +26,14 @@
     <div class="grid">
         <div class="left-column">
           <h2>HIGH SCORES</h2>
+          <p> Joueur : <span id="Joueur"></span> Score : <span id="HScore"></span></p>
+          <p id="JC"></p>
           <ol id="highScores">
+            <!-- <li id="JC"></li>
             <li id="JC"></li>
             <li id="JC"></li>
             <li id="JC"></li>
-            <li id="JC"></li>
-            <li id="JC"></li>
-            <li id="JC"></li>
+            <li id="JC"></li> -->
           </ol>
         </div>
         <canvas id="tetris" class="game-board" width="400px" height="800px"></canvas>
@@ -40,8 +41,6 @@
           <div>
             <h1>TETRIS</h1>
             <p>Score: <span id="score">0</span></p>
-            <!-- <p>Lines: <span id="lines">0</span></p>
-            <p>Level: <span id="level">0</span></p> -->
             <canvas id="next" class="next"></canvas>
           </div>
           <button id="play-btn" onclick="drop()" class="play-button">Play</button>
