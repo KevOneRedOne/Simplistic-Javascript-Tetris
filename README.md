@@ -1,5 +1,6 @@
 # Simplistic-Javascript-Tetris
 
+![image](/assets/img/tetrisgame.png)
 ## Average Javascript Enjoyers Members :
 - Alves Kévin
 - Djoudi Yanis
@@ -35,5 +36,3 @@ To succeed in making our project, we had to resource ourselves on the net, here 
 - Devdoc : https://devdocs.io/javascript/
 - w3school : https://www.w3schools.com/js/default.asp
 - Lyon YNOV Campus's Object and DOM tutorials
-
-![image](/assets/img/tetrisexample.png)
