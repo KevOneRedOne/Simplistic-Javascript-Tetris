@@ -20,7 +20,7 @@ const PIECES = [
     [J,"orange"]
 ];
 
-let score = 0;
+var score = 0;
 
 
 // draw a square
@@ -176,11 +176,11 @@ Piece.prototype.lock = function(){
             }
             // pieces to lock on top = game over
             if(this.y + r < 0){
-                alert("Game Over");
-
-                // stop request animation frame
+                var locktop = true
                 gameOver = true;
-                break;
+                // MessageUser();
+                // // cancelAnimationFrame(drop)
+                break
             }
             // we lock the piece
             board[this.y+r][this.x+c] = this.color;
@@ -209,6 +209,10 @@ Piece.prototype.lock = function(){
         }
     }
 
+    if (locktop == true | gameOver == true) {
+        MessageUser();
+    }
+
     // update the board
     drawBoard();
     
@@ -216,8 +220,8 @@ Piece.prototype.lock = function(){
     scoreElement.innerHTML = score;
 }
 
-// collision function
 
+// collision function
 Piece.prototype.collision = function(x,y,piece){
     for( r = 0; r < piece.length; r++){
         for(c = 0; c < piece.length; c++){
@@ -266,13 +270,23 @@ function CONTROL(event){
 }
 
 
-// drop the piece every 1sec
 
-let dropStart = Date.now();
-let gameOver = false;
+// drop the piece every 800ms
+var dropStart = Date.now();
+var gameOver = false;
 function drop(){
     document.querySelector('#play-btn').style.display = 'none'
     document.querySelector('#pause-btn').style.display = 'block'
+    // toto = document.querySelector('#pause-btn')
+    
+    // if (toto.addEventListener("click", function(){
+    //     // document.querySelector('#play-btn').style.display = 'block'
+    //     // document.querySelector('#pause-btn').style.display = 'none'
+    //     alert('Jeu en pause')
+    //     cancelAnimationFrame(drop)
+    // }));
+    
+    
     let now = Date.now();
     let delta = now - dropStart;
     if(delta > 800){
@@ -281,6 +295,11 @@ function drop(){
     }
     if(!gameOver){
         requestAnimationFrame(drop);
+    } else {
+        alert('Game Over !')
+        const nameUser = prompt("Veuillez saisir votre nom : ");
+        alert('Joueur : ' + nameUser + '  '  + 'Score : '+ score);
+        cancelAnimationFrame(drop)
     }
     calculateFPSNormal();
     updateLabel( FPSNormal );
@@ -290,7 +309,27 @@ function drop(){
 
 function pause() {
 
+
 }
+
+// const MessageUser = () => {
+//     if (gameOver == true){
+
+
+//         // HighScore()
+//     }
+    
+// }
+
+// const HighScore = () => {
+//     hightScorelist = document.querySelector('JC')
+    
+//     scoretab = {'Joueur' : nameUser, "Score " : score}
+//     hightScores = JSON.parse(scoretab)
+
+
+//     highScoreList.innerHTML = hightScores.Joueur + ", " + hightScores.score
+// }
 
 
 

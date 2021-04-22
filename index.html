@@ -24,6 +24,17 @@
       </div>
     </header>
     <div class="grid">
+        <div class="left-column">
+          <h2>HIGH SCORES</h2>
+          <ol id="highScores">
+            <li id="JC"></li>
+            <li id="JC"></li>
+            <li id="JC"></li>
+            <li id="JC"></li>
+            <li id="JC"></li>
+            <li id="JC"></li>
+          </ol>
+        </div>
         <canvas id="tetris" class="game-board" width="400px" height="800px"></canvas>
         <div class="right-column">
           <div>
@@ -33,8 +44,21 @@
             <p>Level: <span id="level">0</span></p> -->
             <canvas id="next" class="next"></canvas>
           </div>
-      <button id="play-btn" onclick="drop()" class="play-button">Play</button>
-      <button id="pause-btn" onclick="pause()" class="play-button">Pause</button>
+          <button id="play-btn" onclick="drop()" class="play-button">Play</button>
+          <button id="pause-btn" onclick="pause()" class="play-button">Pause</button>
+          <br>
+          <div class="controls">
+            <p class="arrow-left"><img src="assets/img/tetris.png"> Move Left</p>
+            <p class="arrow-down"><img src="assets/img/tetris.png"> Move Down</p>
+            <p class="arrow-right"><img src="assets/img/tetris.png"> Move Right</p>
+            <p class="arrow-up"><img src="assets/img/tetris.png"> Rotate Right</p>
+          </div>
+          <br>
+          <br>
+          <div class="footer">
+            <p>by <a href="https://github.com/Tadayoshi123/Simplistic-Javascript-Tetris" target="_blank">Average-JS-Enjoyers </a></p>
+          </div>
+      </div>
     </body>
     <script type="text/javascript" src="assets/js/tetrominoes.js"></script>
     <script type="text/javascript" src="assets/js/tetris.js"></script>

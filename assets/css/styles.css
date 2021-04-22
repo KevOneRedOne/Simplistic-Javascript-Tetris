@@ -75,4 +75,20 @@ body {
   display : none
 }
 
+/* part of CSS : move arrow icon  */
+.arrow-left img {
+  width: 36px;
+  transform: rotate(-90deg);
+}
+.arrow-right img {
+  width: 36px;
+  transform: rotate(90deg);
+}
+.arrow-down img {
+  width: 36px;
+  transform: rotate(180deg);
+}
+.arrow-up img {
+  width: 36px;
+}
 
