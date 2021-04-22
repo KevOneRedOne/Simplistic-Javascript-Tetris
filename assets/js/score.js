@@ -30,3 +30,4 @@
 
 //     localStorage.setItem('highScores', JSON.stringify(highScores));
 // }
+

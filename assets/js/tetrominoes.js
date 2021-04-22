@@ -1,13 +1,17 @@
-/*
-The tetromino file is used to create the shapes of the tetris Z, T, L, O, I, J and S.
+/*-------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+	The tetrominoes file is used to create the shapes of the tetris 
+	Z, T, L, O, I, J and S.
 
-The idea is that, for a VACANT (empty) square, 
-we give 0, and for an OCCUPIED square, we give 1.
+	The idea is that, for a VACANT (empty) square, 
+	we give 0, and for an OCCUPIED square, we give 1.
 
-The player must be able to rotate a piece!  
-Therefore the easiest way is to put all the movements of a Tetromino 
-in a table.
-
+	The player must be able to rotate a piece!  
+	Therefore the easiest way is to put all the movements of a Tetromino 
+	in a table.
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 */
 
 
