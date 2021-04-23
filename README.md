@@ -7,6 +7,8 @@
 - Moren Yohan (BoSswosile)
 - Draris Sofiane 
 
+<hr>
+
 ## Objectives
 Our goal was to recreate a Tetris game from scratch using Javascript.
 
@@ -28,6 +30,7 @@ You will play using the arrows on your keyboard :
 - Pause button
 - Game runs at 60 fps
 
+<hr>
 ## Sources
 To succeed in making our project, we had to resource ourselves on the net, here are some of the resources we used :
 
@@ -37,3 +40,12 @@ To succeed in making our project, we had to resource ourselves on the net, here 
 - Devdoc : https://devdocs.io/javascript/
 - w3school : https://www.w3schools.com/js/default.asp
 - Lyon YNOV Campus's Object and DOM tutorials
+
+<hr>
+
+## Tetris Game 
+
+Here is the link to our Tetris game :
+
+https://simplistic-javascript-tetris.netlify.app/
+
