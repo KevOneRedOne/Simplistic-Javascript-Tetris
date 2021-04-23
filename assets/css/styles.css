@@ -79,6 +79,10 @@ body {
 }
 
 /* part of CSS : move arrow icon  */
+
+.controls{
+  padding: 8px;
+}
 .arrow-left img {
   width: 36px;
   transform: rotate(-90deg);
@@ -93,5 +97,11 @@ body {
 }
 .arrow-up img {
   width: 36px;
+}
+.ESC img {
+  width: 36px;
+}
+.Space img {
+  width: 38px;
 }
 
