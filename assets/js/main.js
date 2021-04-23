@@ -197,8 +197,6 @@ const showHighScores = () => {
         .map((Scores) => `<li> ${Scores.playername} : ${Scores.score} `)
         .join(' ');
 }
-// toto
-// tata
 
 
 
