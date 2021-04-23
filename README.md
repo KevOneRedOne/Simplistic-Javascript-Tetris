@@ -31,8 +31,9 @@ You will play using the arrows on your keyboard :
 ## Sources
 To succeed in making our project, we had to resource ourselves on the net, here are some of the resources we used :
 
+- Javascript Tetris tutorial by CodeExplained : https://www.codeexplained.org/2018/08/create-tetris-game-using-javascript.html
+- JSON tutorial by James Q Quick : https://www.youtube.com/watch?v=DFhmNLKwwGw
 - MDN : https://developer.mozilla.org/fr/docs/Web/JavaScript
-- Javascript tutorial: https://www.codeexplained.org/2018/08/create-tetris-game-using-javascript.html
 - Devdoc : https://devdocs.io/javascript/
 - w3school : https://www.w3schools.com/js/default.asp
 - Lyon YNOV Campus's Object and DOM tutorials

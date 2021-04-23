@@ -10,7 +10,7 @@ const ctxNext = cvsNext.getContext("2d")
 
 const scoreElement = document.getElementById("score");
 
-//creation of variables allowing to create the tetris board
+//creation of the variables used to create the tetris board
 const ROW = 20;
 const COL = COLUMN = 10;
 const SQ = squareSize = 40;
@@ -37,7 +37,7 @@ var score = 0;
 --------------------------Tetris Board Creation------------------------------
 -----------------------------------------------------------------------------*/
 
-// DrawSquare function allows to customise the canvas (the board) 
+// DrawSquare function allows the customisation of the canvas (the board) 
 const drawSquare = (x,y,color) =>{
     ctx.fillStyle = color;
     ctx.fillRect(x*SQ,y*SQ,SQ,SQ);
@@ -69,7 +69,11 @@ createBoard();
 
 drawBoard();
 
-// generate random pieces
+
+/*---------------------------------------------------------------------------
+--------------------------Random Pieces Generator----------------------------
+-----------------------------------------------------------------------------*/
+
 
 function randomPiece(){
     let r = randomN = Math.floor(Math.random() * PIECES.length) // 0 -> 6
@@ -111,6 +115,8 @@ function drop(){
     document.querySelector('#play-btn').style.display = 'none'
     document.querySelector('#pause-btn').style.display = 'block'
     
+    showHighScores();
+
     let now = Date.now();
     let delta = now - dropStart;
 
@@ -147,10 +153,6 @@ const pause = () => {
 }
 
 
-
-
-
-
 /*---------------------------------------------------------------------------
 --------------------------------High Scores----------------------------------
 -----------------------------------------------------------------------------*/
@@ -159,20 +161,39 @@ const pause = () => {
 
  
 const HighScore = (nameUser) => {
-    // hightScorelist = document.querySelector('JC')
+
+    const highScores= JSON.parse(localStorage.getItem("highScores")) || [] ;
+    const highScoresList = document.getElementById('highScores');
+
+
+    highScoresList.innerHTML = highScores
+        .map((Scores) => `<li> ${Scores.playername} : ${Scores.score} `)
+        .join(' ');
+
+
+    const MAX_HIGH_SCORES = 5
+
+    const Scores = {
+        playername : nameUser,
+        score : score 
+    }
+    highScores.push(Scores)
+    highScores.sort((a,b) =>  b.Scores - a.Scores)
+    highScores.splice(MAX_HIGH_SCORES);
+
+    localStorage.setItem('highScores', JSON.stringify(highScores));
     
-
     
-    var scoretab = {"Joueur" : nameUser, "Score" : score}
-    console.log(scoretab)
-    var myJSON = JSON.stringify(scoretab)
-    document.querySelector("Joueur").innerHTML = myJSON;
+}
+
+const showHighScores = () => {
+    const highScores= JSON.parse(localStorage.getItem("highScores")) || [] ;
+    const highScoresList = document.getElementById('highScores');
 
 
-    // hightScores = JSON.parse(scoretab)
-    // localStorage.setItem("Hight Score" ,scoretab)
-
-    // highScoreList.innerHTML = hightScores.Joueur + ", " + hightScores.score
+    highScoresList.innerHTML = highScores
+        .map((Scores) => `<li> ${Scores.playername} : ${Scores.score} `)
+        .join(' ');
 }
 
 
