@@ -31,6 +31,7 @@ You will play using the arrows on your keyboard :
 - Game runs at 60 fps
 
 <hr>
+
 ## Sources
 To succeed in making our project, we had to resource ourselves on the net, here are some of the resources we used :
 
