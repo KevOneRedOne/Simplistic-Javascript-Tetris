@@ -192,7 +192,6 @@ const showHighScores = () => {
     const highScores= JSON.parse(localStorage.getItem("highScores")) || [] ;
     const highScoresList = document.getElementById('highScores');
 
-
     highScoresList.innerHTML = highScores
         .map((Scores) => `<li> ${Scores.playername} : ${Scores.score} `)
         .join(' ');
