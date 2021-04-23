@@ -74,6 +74,9 @@ body {
 #pause-btn {
   display : none
 }
+#restart-btn {
+  display : none
+}
 
 /* part of CSS : move arrow icon  */
 .arrow-left img {

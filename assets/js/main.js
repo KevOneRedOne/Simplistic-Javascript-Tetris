@@ -114,6 +114,7 @@ var gameOver = false;
 function drop(){
     document.querySelector('#play-btn').style.display = 'none'
     document.querySelector('#pause-btn').style.display = 'block'
+    document.querySelector('#restart-btn').style.display = 'block'
     
     showHighScores();
 
@@ -145,6 +146,7 @@ function drop(){
 const pause = () => {
     document.querySelector('#play-btn').style.display = 'block'
     document.querySelector('#pause-btn').style.display = 'none'
+    document.querySelector('#restart-btn').style.display = 'block'
     
     alert('Votre partie est en pause !' + '\n' + '\n' +  'Pour relancer le jeu, cliquez sur OK, puis sur PLAY.')
 
@@ -171,14 +173,14 @@ const HighScore = (nameUser) => {
         .join(' ');
 
 
-    const MAX_HIGH_SCORES = 5
+    const MAX_HIGH_SCORES = 10
 
     const Scores = {
         playername : nameUser,
         score : score 
     }
-    highScores.push(Scores)
-    highScores.sort((a,b) =>  b.Scores - a.Scores)
+    highScores.push(Scores);
+    highScores.sort((a,b) =>  b.score - a.score)
     highScores.splice(MAX_HIGH_SCORES);
 
     localStorage.setItem('highScores', JSON.stringify(highScores));
