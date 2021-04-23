@@ -2,10 +2,10 @@
 
 ![image](/assets/img/tetrisgame.png)
 ## Average Javascript Enjoyers Members :
-- Alves Kévin
-- Djoudi Yanis
-- Draris Sofiane
-- Moren Yohan
+- Alves Kévin (KevOneRedOne)
+- Djoudi Yanis (Tadayoshi123)
+- Moren Yohan (BoSswosile)
+- Draris Sofiane 
 
 ## Objectives
 Our goal was to recreate a Tetris game from scratch using Javascript.
