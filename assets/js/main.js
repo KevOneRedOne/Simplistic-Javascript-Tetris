@@ -17,6 +17,8 @@ const SQ = squareSize = 40;
 const VACANT = "black"; 
 var board = [];
 var score = 0;
+var scorebase = 40 ;
+var bonusScore = 0 ;
 var lines = 0;
 var niv = 0;
 var gamewin = true;
