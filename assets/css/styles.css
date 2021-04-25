@@ -23,7 +23,8 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1vh;
-  margin-bottom: 5vh;
+  margin-bottom: 1vh;
+  margin-top: 1vh;
 }
 
 .H-logo img {
@@ -47,7 +48,7 @@ body {
 
 
 .grid {
-  padding: 5vh;
+  padding: 2.5vh;
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
