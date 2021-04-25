@@ -23,7 +23,6 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1vh;
-  margin-bottom: 1vh;
 }
 
 .H-logo img {
@@ -35,9 +34,6 @@ body {
   font-size: 1.7em;
 }
 
-.H-tittle {
-  padding: 1vh;
-}
 
 .Count_FPS {
   display : flex;
