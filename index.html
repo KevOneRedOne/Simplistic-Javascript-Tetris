@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
     <link rel="icon" href="assets/img/tetris24px.png" />
   </head>
-  <body>
+  <body class ="zoomed" onload="zoom()">
     <header>
       <div class="header">
         <div class="H-logo">
@@ -69,6 +69,12 @@
     <script type="text/javascript" src="assets/js/Piece.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script type="text/javascript" src="assets/js/fps.js"></script>
+    <script type="text/javascript">
+      // force zoom to 90%
+      const zoom = () => {
+        document.body.style.zoom = "90%" 
+      }
+    </script>
 </html>
 
 
