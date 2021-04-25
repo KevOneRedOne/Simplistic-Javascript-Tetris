@@ -44,6 +44,8 @@ To succeed in making our project, we had to resource ourselves on the net, here 
 - Devdoc : https://devdocs.io/javascript/
 - w3school : https://www.w3schools.com/js/default.asp
 - Lyon YNOV Campus's Object and DOM tutorials
+- Chrono : https://forum.alsacreations.com/topic-5-76681-1-Chronometre-en-Javascript-demarrage-automatique.html 
+
 
 <hr>
 
