@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Simplistic Javascript Tetris"/>
+    <meta property="og:image" content="/assets/img/tetrispresentation.png"/>
+    <meta name="keywords" content="JavaScript, Retro Tetris" />
+    <meta name="author" content="Average-JS-Enjoyers" />
     <title>Simplistic JS Tetris</title>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
@@ -10,11 +14,11 @@
   </head>
   <body>
     <header>
-     <div class="Count_FPS">
-       <div class="FPS"> FPS :  </div>
-       <div id="fpsValue" title="FPS"></div>
-     </div>
       <div class="header">
+        <!-- <div class="Count_FPS">
+          <div class="FPS"> FPS :  </div>
+          <div id="fpsValue" title="FPS"></div>
+        </div> -->
         <div class="H-logo">
           <img src="assets/img/tetris128px.png" alt="Tétris">
         </div>
@@ -34,14 +38,20 @@
           <div>
             <h1>TETRIS</h1>
             <p>Score: <span id="score">0</span></p>
+            <p>Lines: <span id="lines">0</span></p>
+            <p>Level: <span id="level">0</span></p>
 
-            <!-- To do: View the next part -->
+            <!-- To do: View the next part (in progress)-->
             <canvas id="Next" class="Next" width= "150px" height="150px"></canvas>
           </div>
           <button id="play-btn" onclick="drop()" class="play-button">Play</button>
           <button id="pause-btn" onclick="pause()" class="play-button">Pause</button>
           <button id="restart-btn" onclick="window.location.reload();" class="play-button">Restart</button>
           <br>
+          <div class="Count_FPS">
+            <div class="FPS"> FPS :  </div>
+            <div id="fpsValue" title="FPS"></div>
+          </div>
           <div class="controls">
             <p class="arrow-left"><img src="assets/img/tetris.png"> Move Left</p>
             <p class="arrow-down"><img src="assets/img/tetris.png"> Move Down</p>

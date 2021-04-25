@@ -50,3 +50,5 @@ Here is the link to our Tetris game :
 
 https://simplistic-javascript-tetris.netlify.app/
 
+The site is still being improved
+

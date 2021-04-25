@@ -24,7 +24,6 @@ body {
   align-items: center;
   padding: 1vh;
   margin-bottom: 1vh;
-  margin-top: 1vh;
 }
 
 .H-logo img {
@@ -40,12 +39,11 @@ body {
   padding: 1vh;
 }
 
-
 .Count_FPS {
   display : flex;
   float: right;
+  padding: 1vh;
 }
-
 
 .grid {
   padding: 2.5vh;
