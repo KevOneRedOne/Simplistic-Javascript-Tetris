@@ -138,14 +138,16 @@ class Piece {
                 }
                 //increment the score
                 score += 40;
+                lines += 1;
             }
         }
 
         //update the board
         drawBoard();
     
-        //update the score
+        //update the score and lines
         scoreElement.innerHTML = score;
+        linesElement.innerHTML = lines;
     }
     
     //HitWall is used to verify the collision of the piece

@@ -9,6 +9,7 @@ const cvsNext = document.getElementById("Next");
 const ctxNext = cvsNext.getContext("2d")
 
 const scoreElement = document.getElementById("score");
+const linesElement = document.getElementById("lines");
 
 //creation of the variables used to create the tetris board
 const ROW = 20;
@@ -31,6 +32,7 @@ const PIECES = [
 var board = [];
 var next = [];
 var score = 0;
+var lines = 0;
 
 
 /*---------------------------------------------------------------------------
