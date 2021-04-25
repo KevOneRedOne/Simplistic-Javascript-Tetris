@@ -1,15 +1,13 @@
 /*---------------------------------------------------------------------------
 ----------------Constant and Values declaration------------------------------
 -----------------------------------------------------------------------------*/
-
 const cvs = document.getElementById("tetris");
 const ctx = cvs.getContext("2d");
 
-const cvsNext = document.getElementById("Next");
-const ctxNext = cvsNext.getContext("2d")
 
 const scoreElement = document.getElementById("score");
 const linesElement = document.getElementById("lines");
+const levelsElement = document.getElementById("level");
 
 //creation of the variables used to create the tetris board
 const ROW = 20;
@@ -17,6 +15,11 @@ const COL = COLUMN = 10;
 const SQ = squareSize = 40;
 //color of the tetris board 
 const VACANT = "black"; 
+var board = [];
+var score = 0;
+var lines = 0;
+var niv = 0;
+var gamewin = true;
 
 // the pieces and their colors
 const PIECES = [
@@ -28,11 +31,35 @@ const PIECES = [
     [I,"cyan"],
     [J,"orange"]
 ];
+// The levels with the speed
+const level = {
+    0: 800,
+    1: 720,
+    2: 630,
+    3: 550,
+    4: 470,
+    5: 380,
+    6: 300,
+    7: 220,
+    8: 130,
+    9: 100,
+    10: 80,
+    11: 75,
+    12: 70,
+    13: 65,
+    14: 60,
+    15: 55,
+    16: 50,
+    17: 45,
+    18: 40,
+    19: 35,
+    20: 800,
+};
 
-var board = [];
-var next = [];
-var score = 0;
-var lines = 0;
+// in progress :
+// const cvsNext = document.getElementById("Next");
+// const ctxNext = cvsNext.getContext("2d")
+// var next = [];
 
 
 /*---------------------------------------------------------------------------
@@ -93,21 +120,24 @@ var p = randomPiece();
 document.addEventListener("keydown",CONTROL);
 
 function CONTROL(event){
-    if(event.keyCode == 37 || event.keyCode == 81){ //keycode 37 = arrow left / 81 = Q
+    if(event.keyCode === 37 || event.keyCode === 81){ //keycode 37 = arrow left / 81 = Q
         p.moveLeft();
         dropStart = Date.now();
-    }else if(event.keyCode == 38 || event.keyCode == 90){ //keycode 38 = arrow up / 90 = Z
+    }else if(event.keyCode === 38 || event.keyCode === 90){ //keycode 38 = arrow up / 90 = Z
         p.rotate();
         dropStart = Date.now();
-    }else if(event.keyCode == 39 || event.keyCode == 68){ //keycode 39 = arrow right / 68 = D
+    }else if(event.keyCode === 39 || event.keyCode === 68){ //keycode 39 = arrow right / 68 = D
         p.moveRight();
         dropStart = Date.now();
-    }else if(event.keyCode == 40 || event.keyCode == 83){ // keycode 40 = arrow down / 83 = S
+    }else if(event.keyCode === 40 || event.keyCode === 83){ // keycode 40 = arrow down / 83 = S
         p.moveDown();
-    } else if (event.keyCode == 32) { // keycode 32 = Space 
-        p.moveDown();
-    } else if (event.keyCode == 27) { // keycode 27 = Escape
+        score += 0.5
+    } else if (event.keyCode === 32) { // keycode 32 = Space 
+        drop();
+    } else if (event.keyCode === 27) { // keycode 27 = Escape
         pause();
+    } else if (event.keyCode === 13) { // keycode 13 = Enter
+        window.location.reload();
     }
 
 }
@@ -117,7 +147,7 @@ function CONTROL(event){
 --------------------------Tetrominoes Drop Down Animation--------------------
 -----------------------------------------------------------------------------*/
 
-//The static Date.now() method returns the number of milliseconds elapsed since January 1
+//The static Date.now() method returns the number of milliseconds elapsed since January 1 1970
 var dropStart = Date.now();
 var gameOver = false;
 
@@ -125,17 +155,17 @@ function drop(){
     document.querySelector('#play-btn').style.display = 'none'
     document.querySelector('#pause-btn').style.display = 'block'
     document.querySelector('#restart-btn').style.display = 'block'
-    
-    
 
     let now = Date.now();
     let delta = now - dropStart;
 
-    // drop the piece every 800ms
-    if(delta > 800){
+
+    if(delta >= level[niv]){
         p.moveDown();
         dropStart = Date.now();
     }
+
+
     if(!gameOver){
         anime = requestAnimationFrame(drop);
     } else {
@@ -150,7 +180,8 @@ function drop(){
         alert(
             'Player : ' + prompts + '\n' 
             + 'Initials : ' + nameUser + '\n' 
-            + 'Score : '+ score
+            + 'Score : ' + Math.round(score) + '\n'
+            + 'Timer : ' + gameTime
             + '\n' + '\n'  
             + 'Restart the game and see if you are in the High Scores !!' 
         );
@@ -158,11 +189,46 @@ function drop(){
         HighScore(nameUser);
     }
 
+    chrono();
+
     showHighScores();
 
     calculateFPSNormal();
     updateLabel( FPSNormal );
 }
+
+/*---------------------------------------------------------------------------
+-----------------------------------Chrono function----------------------------
+-----------------------------------------------------------------------------*/
+var start = new Date()
+var end = 0
+var diff = 0
+var pausechrono = 0
+
+const chrono = () => {
+	end = new Date()
+	diff = end - start  
+	diff = new Date(diff)
+	var msec = diff.getMilliseconds() 
+	var sec = diff.getSeconds()
+ 	var min = diff.getMinutes()
+	var hr = diff.getHours()-1
+	if (min < 10){
+		min = "0" + min
+	}
+	if (sec < 10){
+		sec = "0" + sec
+	}
+	if(msec < 10){
+		msec = "00" +msec
+	}
+	else if(msec < 100){
+		msec = "0" +msec
+	}
+    gameTime = hr + ":" + min + ":" + sec + ":" + msec
+	document.getElementById("Timer").innerHTML = gameTime
+}
+
 
 /*---------------------------------------------------------------------------
 -----------------------------------Pause function----------------------------
@@ -173,11 +239,12 @@ const pause = () => {
     document.querySelector('#restart-btn').style.display = 'block'
     alert('Your game is on pause !' 
     + '\n' + '\n' 
-    +  'To restart the game, click "OK", then "PLAY".'
+    + 'To restart the game, click "OK", then "PLAY".' + '\n'
+    + 'Or Press "SPACE" twice !'
     );
     cancelAnimationFrame(anime)
+    
 }
-
 
 /*---------------------------------------------------------------------------
 --------------------------------High Scores----------------------------------
@@ -191,7 +258,7 @@ const HighScore = (nameUser) => {
     //Sets an object Scores
     const Scores = {
         playername : nameUser,
-        score : score 
+        score : Math.round(score), 
     }
     highScores.push(Scores);
     highScores.sort((a,b) =>  b.score - a.score)

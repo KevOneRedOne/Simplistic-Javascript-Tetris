@@ -29,6 +29,9 @@ You will play using the arrows on your keyboard :
 - Score leaderboard
 - Pause button
 - Game runs at 60 fps
+- Levels with the increase of the game speed
+- Numbers of lines 
+- Timer for the game (still in progress)
 
 <hr>
 

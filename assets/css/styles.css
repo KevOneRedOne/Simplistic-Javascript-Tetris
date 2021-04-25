@@ -2,6 +2,7 @@ html,
 body {
   margin: 0;
   overflow-x: hidden;
+  overflow-y: hidden;
   background-color: rgb(36, 34, 34);
   background-image: url("../img/bg.jpg");
   background-repeat: no-repeat;
@@ -27,12 +28,12 @@ body {
 }
 
 .H-logo img {
-  width: 50px;
+  width: 70px;
 }
 
 .H-tittle h1 {
   text-transform: uppercase;
-  font-size: 1.8em;
+  font-size: 1.7em;
 }
 
 .H-tittle {
@@ -58,6 +59,17 @@ body {
   justify-content: space-around;
 }
 
+.data {
+  margin-bottom: 4vh;
+}
+
+.right-column h1 {
+  font-size: 1.6em;
+}
+
+.left-column h2 {
+  font-size: 1.6em;
+}
 .game-board {
   border: solid 2px;
 }
@@ -76,6 +88,12 @@ body {
 #restart-btn {
   display : none
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
 
 /* part of CSS : move arrow icon  */
 
@@ -101,6 +119,9 @@ body {
   width: 36px;
 }
 .Space img {
+  width: 38px;
+}
+.Enter img {
   width: 38px;
 }
 

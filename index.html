@@ -21,6 +21,9 @@
         </div>
         <div class="H-tittle">
           <h1> Simplistic JS Tetris</h1>
+          <div class="footer">
+            <p>by <a href="https://github.com/KevOneRedOne/Simplistic-Javascript-Tetris" target="_blank">Average-JS-Enjoyers </a></p>
+          </div>
         </div>
       </div>
     </header>
@@ -32,17 +35,18 @@
         </div>
         <canvas id="tetris" class="game-board" width="400px" height="800px"></canvas>
         <div class="right-column">
-          <div>
+          <div class="data">
             <h1>TETRIS</h1>
             <p>Score: <span id="score">0</span></p>
+            <p>Level: <span id="level">0</span></p>
             <p>Lines: <span id="lines">0</span></p>
-            <!-- <p>Level: <span id="level">0</span></p> -->
-
-            <!-- To do: View the next part (in progress)-->
-            <canvas id="Next" class="Next" width= "150px" height="150px"></canvas>
+            <br>
+            <p>Timer: <span id="Timer">0:00:00:00</span></p>
+            <!-- To do: View the next piece (in progress)-->
+            <!-- <canvas id="Next" class="Next" width= "100px" height="100px"></canvas> -->
           </div>
-          <button id="play-btn" onclick="drop()" class="play-button">Play</button>
-          <button id="pause-btn" onclick="pause()" class="play-button">Pause</button>
+          <button id="play-btn" name="playbtn" onclick="drop()" class="play-button">Play</button>
+          <button id="pause-btn" name="pausebtn" onclick="pause();" class="play-button">Pause</button>
           <button id="restart-btn" onclick="window.location.reload();" class="play-button">Restart</button>
           <br>
           <div class="Count_FPS">
@@ -54,14 +58,11 @@
             <p class="arrow-down"><img src="assets/img/tetris.png"> Move Down</p>
             <p class="arrow-right"><img src="assets/img/tetris.png"> Move Right</p>
             <p class="arrow-up"><img src="assets/img/tetris.png"> Rotate Right</p>
-            <p class="Space"><img src="assets/img/space.png"> Move Down</p>
+            <p class="Space"><img src="assets/img/space.png"> Play </p>
             <p class="ESC"><img src="assets/img/escape.png"> Pause</p>
+            <p class="Enter"><img src="assets/img/enter-key.png"> Restart</p>
           </div>
           <br>
-          <br>
-          <div class="footer">
-            <p>by <a href="https://github.com/KevOneRedOne/Simplistic-Javascript-Tetris" target="_blank">Average-JS-Enjoyers </a></p>
-          </div>
       </div>
     </body>
     <script type="text/javascript" src="assets/js/tetrominoes.js"></script>

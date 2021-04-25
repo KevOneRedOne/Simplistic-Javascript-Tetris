@@ -61,8 +61,7 @@ class Piece {
             this.x++;
             this.draw();
         }
-        calculateFPSNormal();
-        updateLabel(FPSNormal);
+
     }
     //moveLeft allows the player to move the piece to the left
     moveLeft() {
@@ -71,8 +70,6 @@ class Piece {
             this.x--;
             this.draw();
         }
-        calculateFPSNormal();
-        updateLabel(FPSNormal);
     }
 
     //rotate allows the player to rotate the piece to the right
@@ -97,8 +94,6 @@ class Piece {
             this.activeTetromino = this.tetromino[this.tetrominoN];
             this.draw();
         }
-        calculateFPSNormal();
-        updateLabel(FPSNormal);
     }
 
     Block() {
@@ -136,18 +131,36 @@ class Piece {
                 for (let c = 0; c < COL; c++) {
                     board[0][c] = VACANT;
                 }
-                //increment the score
+
+                //increment the score, line and level
                 score += 40;
                 lines += 1;
+
+                // if the level isn't 20
+                if (niv != 20) {
+                    // Every 5 lines, the level increase by 1.  
+                    if (lines % 5 == 0) {
+                        niv += 1
+                        levelsElement.innerHTML = niv
+                    }
+                // When the level is at maximum
+                } else if (gamewin == true) {
+                    alert(
+                        "GOOD GAME !!!" + '\n' +
+                        "You're at max speed !!" + '\n' + '\n' 
+                        + "Keep playing to improve your score !! ")
+                    gamewin = false
+                }
             }
         }
-
+        
         //update the board
         drawBoard();
-    
-        //update the score and lines
-        scoreElement.innerHTML = score;
+        
+        //update the score, lines
+        scoreElement.innerHTML = Math.round(score);
         linesElement.innerHTML = lines;
+        
     }
     
     //HitWall is used to verify the collision of the piece
