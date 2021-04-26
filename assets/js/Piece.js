@@ -136,9 +136,9 @@ class Piece {
                 score = score + bonusScore + scorebase;
                 lines += 1;
                 // if the level isn't 20
-                if (niv != 20) {
+                if (niv != 25) {
                     // Every 5 lines, the level increase by 1.  
-                    if (lines % 5 == 0) {
+                    if (lines % 4 == 0) {
                         niv += 1
                         bonusScore += 40
                         levelsElement.innerHTML = niv
@@ -150,6 +150,7 @@ class Piece {
                         "You're at max speed !!" + '\n' + '\n' 
                         + "Keep playing to improve your score !! ")
                     gamewin = false
+                    niv = 25
                 }
 
             }
