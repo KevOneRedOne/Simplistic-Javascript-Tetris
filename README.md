@@ -19,11 +19,14 @@ In order to play the game, you first have to run the program on your browser usi
 
 Once this is done, you simply have to click on play button then enjoy the game !
 
-You will play using the arrows on your keyboard :
-- Up is for rotating the piece to the right;
-- Left is for moving the piece to the left;
-- Right is for moving the piece to the right;
-- Down is for dropping the piece down faster.
+You will play using the keyboard :
+- Z or up arrow, is for rotating the piece to the right;
+- S or left arrow, is for moving the piece to the left;
+- D or right arrow, is for moving the piece to the right;
+- S or down arrow, is for dropping the piece down faster;
+- SPACE or Play button, is for running the game;
+- ESC or Pause button, is to pause the game;
+- Enter or Restart button, is for refreshing the game;
 
 ## Additionnal Functionalities
 - Score leaderboard

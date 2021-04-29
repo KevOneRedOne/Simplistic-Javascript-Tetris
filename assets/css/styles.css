@@ -119,11 +119,3 @@ body {
 .Enter img {
   width: 38px;
 }
-
-
-/* force zoom to 90% */
-.zoomed { 
-  zoom: 3; 
-  -moz-transform: scale(3); 
-  -moz-transform-origin: 0 0;
-}
