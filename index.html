@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="copyright" content="https://github.com/KevOneRedOne/Simplistic-Javascript-Tetris"
+    <meta name="copyright" content="https://github.com/KevOneRedOne/Simplistic-Javascript-Tetris">
     <meta property="og:title" content="Simplistic Javascript Tetris"/>
     <meta property="og:image" content="/assets/img/tetrispresentation.png"/>
     <meta property="og:description" content="Simplistic-JavaScript-Tetris is a project to create a javascript web video game. Therefore, we have chosen to recreate the retro game but still in fashion: Tetris"/>
@@ -47,7 +47,7 @@
             <!-- <canvas id="Next" class="Next" width= "100px" height="100px"></canvas> -->
           </div>
           <button id="play-btn" name="playbtn" onclick="drop()" class="play-button">Play</button>
-          <button id="pause-btn" name="pausebtn" onclick="pause();" class="play-button">Pause</button>
+          <button id="pause-btn" name="pausebtn" onclick="togglePause();" class="play-button">Pause</button>
           <button id="restart-btn" onclick="window.location.reload();" class="play-button">Restart</button>
           <br>
           <div class="Count_FPS">
@@ -66,10 +66,10 @@
           <br>
       </div>
     </body>
-    <script type="text/javascript" src="assets/js/tetrominoes.js"></script>
-    <script type="text/javascript" src="assets/js/Piece.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
-    <script type="text/javascript" src="assets/js/fps.js"></script>
+    <script type="text/javascript" src="tetrominoes.js"></script>
+    <script type="text/javascript" src="Piece.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="fps.js"></script>
     <script type="text/javascript">
       // force zoom to 90%
       const zoom = () => {

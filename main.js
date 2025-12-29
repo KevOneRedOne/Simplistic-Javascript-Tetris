@@ -11,10 +11,10 @@ const levelsElement = document.getElementById("level");
 
 //creation of the variables used to create the tetris board
 const ROW = 20;
-const COL = COLUMN = 10;
-const SQ = squareSize = 40;
-//color of the tetris board 
+const COL = 10;
+const SQ = 40;
 const VACANT = "black"; 
+
 var board = [];
 var score = 0;
 var scorebase = 40 ;
@@ -22,6 +22,7 @@ var bonusScore = 0 ;
 var lines = 0;
 var niv = 0;
 var gamewin = true;
+var isPaused = false;
 
 // the pieces and their colors
 const PIECES = [
@@ -63,6 +64,14 @@ const level = {
     25: 40,
 };
 
+
+
+
+
+
+
+
+
 // in progress :
 // const cvsNext = document.getElementById("Next");
 // const ctxNext = cvsNext.getContext("2d")
@@ -93,7 +102,7 @@ const createBoard = () => {
 }
 
 // draw the board
-function drawBoard(){
+const drawBoard = () =>{
     for(let r = 0; r <ROW; r++){
         for(let c = 0; c < COL; c++){
             drawSquare(c,r,board[r][c]);
@@ -102,7 +111,6 @@ function drawBoard(){
 }
 
 createBoard();
-
 drawBoard();
 
 
@@ -117,6 +125,7 @@ function randomPiece(){
 }
 
 var p = randomPiece();
+// var nextPiece = randomPiece();
 
 
 
@@ -126,121 +135,124 @@ var p = randomPiece();
 
 document.addEventListener("keydown",CONTROL);
 
-function CONTROL(event){
-    if(event.keyCode === 37 || event.keyCode === 81){ //keycode 37 = arrow left / 81 = Q
-        p.moveLeft();
-        dropStart = Date.now();
-    }else if(event.keyCode === 38 || event.keyCode === 90){ //keycode 38 = arrow up / 90 = Z
-        p.rotate();
-        dropStart = Date.now();
-    }else if(event.keyCode === 39 || event.keyCode === 68){ //keycode 39 = arrow right / 68 = D
-        p.moveRight();
-        dropStart = Date.now();
-    }else if(event.keyCode === 40 || event.keyCode === 83){ // keycode 40 = arrow down / 83 = S
-        p.moveDown();
-        score += 0.5
-    } else if (event.keyCode === 32) { // keycode 32 = Space 
-        drop();
-    } else if (event.keyCode === 27) { // keycode 27 = Escape
-        pause();
-    } else if (event.keyCode === 13) { // keycode 13 = Enter
-        window.location.reload();
-    }
+function CONTROL(event) {
+    if(isPaused) return;
 
+    switch (event.keyCode) {
+        case 37:
+        case 81: // Gauche
+            p.moveLeft();
+            dropStart = Date.now();
+            break;
+        case 38:
+        case 90: // Rotation (Haut ou Z)
+            p.rotate();
+            dropStart = Date.now();
+            break;
+        case 39:
+        case 68: // Droite
+            p.moveRight();
+            dropStart = Date.now();
+            break;
+        case 40:
+        case 83: // Bas
+            p.moveDown();
+            score += 0.5;
+            break;
+        case 32: // Espace
+            drop();
+            break;
+        case 27: // Échap
+            tooglePause();
+            break;
+        case 13: // Entrée
+            window.location.reload();
+            break;
+    }
 }
 
 
 /*---------------------------------------------------------------------------
 --------------------------Tetrominoes Drop Down Animation--------------------
 -----------------------------------------------------------------------------*/
-
-//The static Date.now() method returns the number of milliseconds elapsed since January 1 1970
 var dropStart = Date.now();
 var gameOver = false;
+var anime;
 
-function drop(){
-    document.querySelector('#play-btn').style.display = 'none'
-    document.querySelector('#pause-btn').style.display = 'block'
-    document.querySelector('#restart-btn').style.display = 'block'
+const drop = () =>{
+    document.querySelector('#play-btn').style.display = 'none';
+    document.querySelector('#pause-btn').style.display = 'block';
+    document.querySelector('#restart-btn').style.display = 'block';
 
-    let now = Date.now();
-    let delta = now - dropStart;
+    const now = Date.now();
+    const delta = now - dropStart;
 
-
-    if(delta >= level[niv]){
+    if (delta >= level[niv]) {
         p.moveDown();
         dropStart = Date.now();
     }
 
-
-    if(!gameOver){
+    if (!gameOver) {
         anime = requestAnimationFrame(drop);
     } else {
-        alert('Game Over !')
-        var prompts = prompt("Enter your first name: ");
-        // Detect empty value on prompt
-        if (prompts == '') {
-            prompts = 'AAA'
-        };
-        // Put the answer in uppercase and select the first 3 letters
-        var nameUser = prompts.toLocaleUpperCase().substring(0,3);
-        alert(
-            'Player : ' + prompts + '\n' 
-            + 'Initials : ' + nameUser + '\n' 
-            + 'Score : ' + Math.round(score) + '\n'
-            + 'Timer : ' + gameTime
-            + '\n' + '\n'  
-            + 'Restart the game and see if you are in the High Scores !!' 
-        );
-        cancelAnimationFrame(anime)
-        HighScore(nameUser);
+        gameOverMessage();
+        cancelAnimationFrame(anime);
     }
-
     chrono();
-
     showHighScores();
-
     calculateFPSNormal();
-    updateLabel( FPSNormal );
+    updateLabel(FPSNormal);
 }
+
+const gameOverMessage = () =>{
+    alert('Game Over !')
+    let prompts = prompt("Enter your first name: ");
+    // Detect empty value on prompt
+    if (prompts == '') {
+        prompts = 'AAA'
+    };
+    // Put the answer in uppercase and select the first 3 letters
+    let nameUser = prompts.toLocaleUpperCase().substring(0,3);
+    alert(
+        'Player : ' + prompts + '\n' 
+        + 'Initials : ' + nameUser + '\n' 
+        + 'Score : ' + Math.round(score) + '\n' 
+        + 'Timer : ' + gameTime
+        + '\n' + '\n'  
+        + 'Restart the game and see if you are in the High Scores !!' 
+    );
+    HighScore(nameUser);
+};
+
 
 /*---------------------------------------------------------------------------
 -----------------------------------Chrono function----------------------------
 -----------------------------------------------------------------------------*/
-var start = new Date()
-var end = 0
-var diff = 0
-// var pausechrono = 0
+
+var start = new Date();
+var end = 0;
+var diff = 0;
+var gameTime = "00:00:00:000";
 
 const chrono = () => {
-	end = new Date()
-	diff = end - start  
-	diff = new Date(diff)
-	var msec = diff.getMilliseconds() 
-	var sec = diff.getSeconds()
- 	var min = diff.getMinutes()
-	var hr = diff.getHours()-1
-	if (min < 10){
-		min = "0" + min
-	}
-	if (sec < 10){
-		sec = "0" + sec
-	}
-	if(msec < 10){
-		msec = "00" +msec
-	}
-	else if(msec < 100){
-		msec = "0" +msec
-	}
-    gameTime = hr + ":" + min + ":" + sec + ":" + msec
-	document.getElementById("Timer").innerHTML = gameTime
+    end = new Date();
+    diff = end - start;
+    diff = new Date(diff);
+
+    const msec = diff.getMilliseconds().toString().padStart(3, '0');
+    const sec = diff.getSeconds().toString().padStart(2, '0');
+    const min = diff.getMinutes().toString().padStart(2, '0');
+    const hr = (diff.getHours() - 1).toString();
+
+    gameTime = `${hr}:${min}:${sec}:${msec}`;
+    document.getElementById("Timer").innerHTML = gameTime;
 }
 
 
 /*---------------------------------------------------------------------------
 -----------------------------------Pause function----------------------------
 -----------------------------------------------------------------------------*/
-const pause = () => {
+const tooglePause = () => {
     document.querySelector('#play-btn').style.display = 'block'
     document.querySelector('#pause-btn').style.display = 'none'
     document.querySelector('#restart-btn').style.display = 'block'

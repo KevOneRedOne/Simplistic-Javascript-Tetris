@@ -1,5 +1,17 @@
 # Simplistic-Javascript-Tetris
 
+![Status](https://img.shields.io/badge/status-archived-red)
+![Maintenance](https://img.shields.io/badge/maintenance-no--longer--maintained-red)
+
+> ⚠️ **This project is no longer maintained** ⚠️
+> 
+> The new version of the game is available on the new repository and website :
+> 
+> 🔗 **New repository :** [Simplistic-Tetris](https://github.com/KevOneRedOne/Simplistic-Tetris)  
+> 🌐 **New website :** [https://simplistic-tetris.netlify.app/](https://simplistic-tetris.netlify.app/)
+
+---
+
 ![image](/assets/img/tetrisgame.png)
 ## Average Javascript Enjoyers Members :
 - Alves Kévin (KevOneRedOne)
@@ -54,9 +66,7 @@ To succeed in making our project, we had to resource ourselves on the net, here 
 
 ## Tetris Game 
 
-Here is the link to our Tetris game :
+> ⚠️ **Note :** This repository is no longer maintained. Please refer to the top section of the README to access the new version.
 
-https://simplistic-javascript-tetris.netlify.app/
-
-The site is still being improved
+Old link (deprecated) : https://simplistic-javascript-tetris.netlify.app/
 
